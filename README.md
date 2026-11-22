@@ -16,7 +16,7 @@
 
 ## 添加小车并查看车载相机
 
-下面用 Webots 自带的 `Khepera4` 作示例。这是一辆带前视相机的双轮差速小车。首次添加时，Webots 会从官方模型库下载资源。[Khepera IV 模型说明](https://github.com/cyberbotics/webots/blob/R2025a/docs/guide/khepera4.md)
+下面用 Webots 自带的 `Khepera4` 作示例。这是一辆带前视相机的双轮差速小车。首次添加时，Webots 会从官方模型库下载资源。[Khepera4 官方模型](https://github.com/cyberbotics/webots/blob/R2025a/projects/robots/k-team/khepera4/protos/Khepera4.proto)
 
 1. 打开赛道后暂停仿真。在左侧场景树选中最后一个顶层节点 `VenueClutter`，点击 **Add（+）**，选择 **PROTO nodes (Webots Projects) → robots → k-team → khepera4 → Khepera4**。
 2. 展开 `Khepera4`。把 `translation` 设为 `2.93 0.23 0`，把 `rotation` 设为 `0 0 1 3.14159`。这样小车会放在底部起点虚线右侧，车头朝左。`translation` 的单位为米，`rotation` 最后一项的单位为弧度。
