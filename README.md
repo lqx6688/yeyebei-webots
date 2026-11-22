@@ -24,3 +24,11 @@
 4. 如果预览被关闭，在场景树选中小车，再通过 **Robot → Camera Devices** 显示 `camera`。双击预览可以独立开窗。要保存加车后的地图，可以在原 `worlds/` 目录下另存一个 `.wbt` 文件。[Webots 相机预览说明](https://github.com/cyberbotics/webots/blob/R2025a/docs/reference/camera.md#overlay-image)
 
 已有 Webots 车模时，可以把它的 `.proto` 和引用的网格、贴图一起放入本地 `protos/`，保留资源的相对路径，再从场景树导入。自己搭建简模时，将车体外观放进 `Robot`，再在其 `children` 里添加 `Camera`，设置相对位置、角度和分辨率。相机采样由该小车的控制器启用。[Webots Camera 参考](https://github.com/cyberbotics/webots/blob/R2025a/docs/reference/camera.md)
+
+## 接入自己的小车控制程序
+
+1. 在解压后的项目根目录下，将 `controllers/` 和 `worlds/` 放在同一级。已有 Webots 控制器时，把整个控制器子目录及它用到的资源复制进去。也可以在 Webots 选择 **File → New → New Robot Controller…**，创建名为 `my_car` 的控制器，再把自己的逻辑接到入口程序里。[Webots 控制器教程](https://github.com/cyberbotics/webots/blob/R2025a/docs/guide/tutorial-4-more-about-controllers.md)
+2. Python 入口文件放在 `controllers/my_car/my_car.py`，目录名和入口名都用 `my_car`。C/C++ 则用向导生成的 Makefile，在 Webots 编辑器里选择 **Build → Build** 编译。Windows 下编译出的入口是 `controllers/my_car/my_car.exe`。Python 启动失败时，可以在 Webots 首选项的 **General → Python command** 选择本机的 Python。[Python 控制器配置](https://github.com/cyberbotics/webots/blob/R2025a/docs/guide/using-python.md)
+3. 在场景树展开小车，把它的 `controller` 字段设为 `my_car`，保存场景后重置并运行。控制台出现 `Starting controller` 和你的入口文件名，就能确认已经绑定。相机、编码器和左右轮电机的设备名要与控制器中读取的名字一致。[Robot 的 controller 字段](https://github.com/cyberbotics/webots/blob/R2025a/docs/reference/robot.md)
+
+复用 K230/F407 实车程序时，先把识别和控制逻辑接到能在电脑运行的 Webots 控制器。用 `Camera` 的画面替代实车采集，用 `PositionSensor` 给出轮编码器读数，再把控制逻辑算出的左右轮目标速度交给 `RotationalMotor`。CanMV 采集和 STM32 HAL 等板端接口需要对应的电脑端适配。
