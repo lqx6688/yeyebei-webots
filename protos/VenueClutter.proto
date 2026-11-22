@@ -1,0 +1,205 @@
+#VRML_SIM R2025a utf8
+
+PROTO VenueClutter [] {
+  Group {
+    children [
+      # Left wall and the adjoining white and black floor markings.
+      Solid {
+        translation -0.31 1.76 1.225
+        name "left wall with 250 mm black skirting"
+        children [
+          Shape {
+            appearance Appearance {
+              material Material {
+                ambientIntensity 1
+                diffuseColor 0.88 0.88 0.86
+              }
+            }
+            geometry DEF WALL_BOX Box { size 0.12 5.05 2.45 }
+          }
+          Pose {
+            translation 0.061 0 -1.10
+            children [
+              Shape {
+                appearance DEF BLACK_MARKING Appearance {
+                  material Material {
+                    ambientIntensity 1
+                    diffuseColor 0.028 0.028 0.028
+                  }
+                }
+                geometry Box { size 0.002 5.05 0.25 }
+              }
+            ]
+          }
+        ]
+        boundingObject USE WALL_BOX
+      }
+      # Start at the visible face of the wall skirting (x = -0.248 m).
+      Pose {
+        translation -0.238 1.76 0.001
+        children [
+          Shape {
+            appearance Appearance {
+              material Material {
+                ambientIntensity 1
+                diffuseColor 1 1 1
+              }
+            }
+            geometry Box { size 0.02 5.05 0.002 }
+          }
+        ]
+      }
+      Pose {
+        translation -0.163 1.76 0.001
+        children [
+          Shape {
+            appearance USE BLACK_MARKING
+            geometry Box { size 0.13 5.05 0.002 }
+          }
+        ]
+      }
+      Solid {
+        translation 0.13 -0.38 0.36
+        name "red fire cabinet"
+        children [
+          Shape {
+            appearance Appearance {
+              material Material {
+                ambientIntensity 1
+                diffuseColor 0.67 0.035 0.045
+              }
+            }
+            geometry DEF CABINET_BOX Box { size 0.34 0.48 0.72 }
+          }
+          Pose {
+            translation 0.174 0 0
+            children [
+              Shape {
+                appearance Appearance {
+                  material Material {
+                    ambientIntensity 1
+                    diffuseColor 0.85 0.055 0.06
+                  }
+                }
+                geometry Box { size 0.012 0.438 0.654 }
+              }
+            ]
+          }
+          Pose {
+            translation 0.186 -0.156 0.02
+            children [
+              Shape {
+                appearance Appearance {
+                  material Material {
+                    diffuseColor 0.22 0.24 0.25
+                    specularColor 0.45 0.45 0.45
+                  }
+                }
+                geometry Box { size 0.018 0.025 0.16 }
+              }
+            ]
+          }
+        ]
+        boundingObject USE CABINET_BOX
+      }
+      # Three-seat sofa along the right side, facing the track.
+      Solid {
+        translation 4.7 2.19 0
+        name "black sofa with silver legs"
+        children [
+          Pose {
+            translation -0.035 0 0.197
+            children [
+              Shape {
+                appearance DEF BLACK_SEAT Appearance {
+                  material Material {
+                    ambientIntensity 1
+                    diffuseColor 0.045 0.045 0.05
+                    shininess 0.12
+                  }
+                }
+                geometry Box { size 0.91 2.14 0.14 }
+              }
+            ]
+          }
+          Pose {
+            translation 0.48 0 0.418
+            children [
+              Shape {
+                appearance USE BLACK_SEAT
+                geometry Box { size 0.20 2.14 0.66 }
+              }
+            ]
+          }
+          Pose {
+            translation -0.065 -0.648 0.297
+            children [
+              DEF CUSHION Shape {
+                appearance USE BLACK_SEAT
+                geometry Box { size 0.82 0.636 0.07 }
+              }
+            ]
+          }
+          Pose {
+            translation -0.065 0 0.297
+            children [ USE CUSHION ]
+          }
+          Pose {
+            translation -0.065 0.648 0.297
+            children [ USE CUSHION ]
+          }
+          Pose {
+            translation 0.01 -1.015 0.36
+            children [
+              DEF ARMREST Shape {
+                appearance USE BLACK_SEAT
+                geometry Box { size 0.99 0.11 0.22 }
+              }
+            ]
+          }
+          Pose {
+            translation 0.01 1.015 0.36
+            children [ USE ARMREST ]
+          }
+          Pose {
+            translation -0.40 -0.93 0.065
+            children [
+              DEF SILVER_LEG Shape {
+                appearance PBRAppearance {
+                  baseColor 0.67 0.69 0.72
+                  metalness 0.38
+                  roughness 0.25
+                }
+                geometry Cylinder { radius 0.025 height 0.13 }
+              }
+            ]
+          }
+          Pose {
+            translation -0.40 0 0.065
+            children [ USE SILVER_LEG ]
+          }
+          Pose {
+            translation -0.40 0.93 0.065
+            children [ USE SILVER_LEG ]
+          }
+          Pose {
+            translation 0.38 -0.93 0.065
+            children [ USE SILVER_LEG ]
+          }
+          Pose {
+            translation 0.38 0 0.065
+            children [ USE SILVER_LEG ]
+          }
+          Pose {
+            translation 0.38 0.93 0.065
+            children [ USE SILVER_LEG ]
+          }
+        ]
+        boundingObject Pose {
+          translation 0.045 0 0.374
+          children [ Box { size 1.07 2.14 0.748 } ]
+        }
+      }
+    ]
+  }
+}
