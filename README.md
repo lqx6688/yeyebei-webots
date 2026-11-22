@@ -14,6 +14,8 @@
 2. 在 Webots 中选择 **File → Open World…**，打开解压目录里的 [worlds/yeyebei_venue.wbt](worlds/yeyebei_venue.wbt)。
 3. 保留解压后的目录结构，Webots 会自动从 worlds/textures/ 读取赛道贴图，从 protos/ 加载场边物品和灯光模型。
 
+## 下述内容可以让你的agent来做
+
 ## 添加小车并查看车载相机
 
 下面用 Webots 自带的 `Khepera4` 作示例。这是一辆带前视相机的双轮差速小车。首次添加时，Webots 会从官方模型库下载资源。[Khepera4 官方模型](https://github.com/cyberbotics/webots/blob/R2025a/projects/robots/k-team/khepera4/protos/Khepera4.proto)
