@@ -1,0 +1,107 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "../protos/VenueClutter.proto"
+EXTERNPROTO "../protos/CeilingTubeLight.proto"
+
+WorldInfo {
+  info [
+    "Yeyebei clockwise five-corner course (low-friction slick vinyl stress variant)."
+    "Photo-matched white lane: 360 mm between continuous 50 mm black bands; tire/track friction = 0.45."
+  ]
+  title "Yeyebei | Competition venue (slick vinyl)"
+  basicTimeStep 10
+  contactProperties [
+    ContactProperties {
+      material1 "tire"
+      material2 "track"
+      coulombFriction [
+        0.45
+      ]
+    }
+    ContactProperties {
+      material1 "caster"
+      material2 "track"
+      coulombFriction [
+        0.25
+      ]
+    }
+  ]
+}
+Viewpoint {
+  fieldOfView 0.96
+  orientation -0.5839690619755025 0.5839690619800585 0.5638796585314835 2.11471886989726
+  position 2.000000000031771 2.306866632886572 7.766918835008267
+  near 0.01
+}
+Background {
+  skyColor [
+    0.19 0.23 0.29
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.55
+  direction -0.3 -0.4 -1
+  intensity 0.85
+}
+CeilingTubeLight {
+  translation 2 2 3.6
+  rotation 0 0 1 1.57079632679
+}
+Solid {
+  translation 2 2 -0.025
+  children [
+    Pose {
+      translation 0 0 0.025
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              ambientIntensity 1
+              diffuseColor 1 1 1
+              specularColor 0.55 0.55 0.55
+              shininess 0.45
+            }
+            texture ImageTexture {
+              url [
+                "textures/yeyebei.png"
+              ]
+              repeatS FALSE
+              repeatT FALSE
+            }
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -3.6 -3.2 0
+                3.6 -3.2 0
+                3.6 3.2 0
+                -3.6 3.2 0
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                -0.3181818182 -0.2272727273
+                1.3181818182 -0.2272727273
+                1.3181818182 1.2272727273
+                -0.3181818182 1.2272727273
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1
+            ]
+            texCoordIndex [
+              0, 1, 2, 3, -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "venue floor"
+  contactMaterial "track"
+  boundingObject Box {
+    size 7.2 6.4 0.05
+  }
+}
+VenueClutter {
+}

@@ -3,7 +3,7 @@
 PROTO VenueClutter [] {
   Group {
     children [
-      # Left wall and the adjoining white and black floor markings.
+      # Left wall and the adjoining black floor marking.
       Solid {
         translation -0.31 1.76 1.225
         name "left wall with 250 mm black skirting"
@@ -34,23 +34,9 @@ PROTO VenueClutter [] {
         ]
         boundingObject USE WALL_BOX
       }
-      # Start at the visible face of the wall skirting (x = -0.248 m).
+      # Place the 130 mm floor black marking flush against the visible wall skirting face (x = -0.248 m).
       Pose {
-        translation -0.238 1.76 0.001
-        children [
-          Shape {
-            appearance Appearance {
-              material Material {
-                ambientIntensity 1
-                diffuseColor 1 1 1
-              }
-            }
-            geometry Box { size 0.02 5.05 0.002 }
-          }
-        ]
-      }
-      Pose {
-        translation -0.163 1.76 0.001
+        translation -0.183 1.76 0.001
         children [
           Shape {
             appearance USE BLACK_MARKING
